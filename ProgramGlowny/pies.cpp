@@ -1,42 +1,42 @@
 #include "pies.h"
 
 Pies::Pies(int id, QString imie, int wiek, RodzajPsa rodzaj, QString rasa)
-    : m_id(id),
-      m_imie(imie),
-      m_wiek(wiek),
-      m_rodzaj(rodzaj),
-      m_rasa(rasa)
+    : id(id),
+      imie(imie),
+      wiek(wiek),
+      rodzaj(rodzaj),
+      rasa(rasa)
 {
 
 }
 
 int Pies::getId() const
 {
-    return m_id;
+    return id;
 }
 
 QString Pies::getImie() const
 {
-    return m_imie;
+    return imie;
 }
 
 int Pies::getWiek() const
 {
-    return m_wiek;
+    return wiek;
 }
 
 RodzajPsa Pies::getRodzaj() const
 {
-    return m_rodzaj;
+    return rodzaj;
 }
 
 QString Pies::getRasa() const
 {
-    return m_rasa;
+    return rasa;
 }
 
 QString Pies::toString() const
 {
-    return QString("ID: %1 Pies o imieniu: %2 Wiek: %3 Rodzaj: %4 Rasa: %5").arg(m_id).arg(m_imie).arg(m_wiek).arg(m_rodzaj).arg(m_rasa);
+    return QString("ID: %1 Pies o imieniu: %2 Wiek: %3 Rodzaj: %4 Rasa: %5").arg(id).arg(imie).arg(wiek).arg(rodzaj).arg(rasa);
 }
 

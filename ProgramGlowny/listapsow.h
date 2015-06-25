@@ -14,7 +14,7 @@ public:
     QStringList  pobierzListePsow();
 
 private:
-    QList<Pies*> m_listaPsow;
+    QList<Pies*> listaPsow;
 };
 
 #endif // LISTAPSOW_H

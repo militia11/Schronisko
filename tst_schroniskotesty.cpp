@@ -1,6 +1,7 @@
 #include <QString>
 #include <QtTest>
 #include <assert.h>
+#include <QDebug>
 
 #include "ProgramGlowny/pies.h"
 #include "ProgramGlowny/listapsow.h"
@@ -38,6 +39,7 @@ void SchroniskoTesty::testListaPsow()
     Pies* wsk_Pies = new Pies(184, "Burek", 4, Grozny, "Bernardyn" );
     ListaPsow lp;
     lp.dodajPsa(wsk_Pies);
+    qDebug() << "dsd" << wsk_Pies->toString();
     QStringList stringLista = lp.pobierzListePsow();
     //QVERIFY(true);
 }
