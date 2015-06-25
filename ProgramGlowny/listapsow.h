@@ -12,9 +12,10 @@ public:
     void dodajPsa(Pies* p);
     void usunPsa(Pies *p);
     QStringList  pobierzListePsow();
+    Pies *getPies(int id);
 
 private:
-    QList<Pies*> m_listaPsow;
+    QList<Pies*> listaPsow;
 };
 
 #endif // LISTAPSOW_H
