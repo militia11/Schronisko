@@ -9,16 +9,10 @@ class ListaPsow
 {
 public:
     ListaPsow();
-<<<<<<< HEAD
     void dodajPsa(Pies* pies);
     void usunPsa(Pies *pies);
     QStringList pobierzListePsow();
     QStringList pobierzListePsow(RodzajPsa rodzaj);
-=======
-    void dodajPsa(Pies* p);
-    void usunPsa(Pies *p);
-    QStringList  pobierzListePsow();
->>>>>>> pobieranieList
     Pies *getPies(int id);
 
 private:

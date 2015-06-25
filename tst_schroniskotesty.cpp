@@ -43,10 +43,7 @@ void SchroniskoTesty::testPies()
 void SchroniskoTesty::testDodaniePsa()
 {
     Pies* wskPies = new Pies(184, "Burek", 4, Grozny, "Bernardyn" );
-<<<<<<< HEAD
 
-=======
->>>>>>> pobieranieList
     ListaPsow psyWSchronisku;
     psyWSchronisku.dodajPsa(wskPies);
     assert(psyWSchronisku.getPies(184));
@@ -84,25 +81,17 @@ void SchroniskoTesty::testPobranieListyPsow()
 
     QCOMPARE( listaTestowa1, psyWSchronisku.pobierzListePsow() );
 
-<<<<<<< HEAD
-    // porównanie z niewłaściwym stringiem
-=======
->>>>>>> pobieranieList
     QStringList listaTestowa2;
     listaTestowa2.append( QString("niezgodne dane") );
     listaTestowa2.append( wskPies2->toString() );
 
-<<<<<<< HEAD
-    QEXPECT_FAIL("", "Stringi się różnią", Continue);
-=======
+
     QEXPECT_FAIL("", "test na niewłaściwe dane : porównanie z niewłaściwym stringiem", Continue);
->>>>>>> pobieranieList
     QCOMPARE( listaTestowa2, psyWSchronisku.pobierzListePsow() );
 
     delete wskPies1;
     delete wskPies2;
-<<<<<<< HEAD
-=======
+
 }
 
 void SchroniskoTesty::testPobranieListyPsowDanegoRodzaju()
@@ -144,7 +133,6 @@ void SchroniskoTesty::testPobranieListyPsowDanegoRodzaju()
     delete wskPies1;
     delete wskPies2;
     delete wskPies3;
->>>>>>> pobieranieList
 }
 
 //QVERIFY(true);
