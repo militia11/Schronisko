@@ -11,6 +11,7 @@ public:
 
 private Q_SLOTS:
     void testPies();
+    void testListaPsow();
 };
 
 SchroniskoTesty::SchroniskoTesty()
@@ -19,13 +20,17 @@ SchroniskoTesty::SchroniskoTesty()
 
 void SchroniskoTesty::testPies()
 {
-    //imie()
     Pies p(24345, "Azor", 4 );
 
     QCOMPARE( 24345, p.getId() );
     QCOMPARE( QString("Azor"), p.getImie() );
     QCOMPARE( 4, p.getWiek() );
     //QVERIFY(true);
+}
+
+void SchroniskoTesty::testListaPsow()
+{
+    //ListaPsow lp;
 }
 
 QTEST_APPLESS_MAIN(SchroniskoTesty)

@@ -16,7 +16,9 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    pies.cpp
+    pies.cpp \
+    listapsow.cpp
 
 HEADERS += \
-    pies.h
+    pies.h \
+    listapsow.h

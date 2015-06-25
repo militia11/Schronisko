@@ -15,7 +15,9 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 SOURCES += ProgramGlowny/pies.cpp
+#SOURCES += ProgramGlowny/listapsow.cpp
 HEADERS += ProgramGlowny/pies.h
+#HEADERS += ProgramGlowny/listapsow.h
 
 SOURCES += tst_schroniskotesty.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
