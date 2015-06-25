@@ -8,7 +8,6 @@ enum RodzajPsa { Lagodny, Grozny };
 class Pies
 {
 
-
 public:
     Pies(int id, QString imie, int wiek, RodzajPsa rodzaj, QString rasa);
     int getId() const;
