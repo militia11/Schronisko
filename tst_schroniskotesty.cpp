@@ -40,6 +40,21 @@ void SchroniskoTesty::testAtrybutyPsa()
     QCOMPARE( Lagodny, p.getRodzaj() );
     QCOMPARE( QString("Pudel"), p.getRasa() );
 
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodne ID", Continue);
+    QCOMPARE( 98345, p.getId() );
+
+    QEXPECT_FAIL("", "test na niewłaściwe dane : inne imie", Continue);
+    QCOMPARE( QString("Burek"), p.getImie() );
+
+    QEXPECT_FAIL("", "test na niewłaściwe dane : inny wiek", Continue);
+    QCOMPARE( 12, p.getWiek() );
+
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodny rodzaj", Continue);
+    QCOMPARE( Grozny, p.getRodzaj() );
+
+    QEXPECT_FAIL("", "test na niewłaściwe dane : inna rasa", Continue);
+    QCOMPARE( QString("Owczarek Bernaski"), p.getRasa() );
+
 }
 
 void SchroniskoTesty::testDodaniePsa()
@@ -80,7 +95,6 @@ void SchroniskoTesty::testPobranieListyPsow()
     QStringList listaTestowa1;
     listaTestowa1.append( wskPies1->toString() );
     listaTestowa1.append( wskPies2->toString() );
-
     QCOMPARE( listaTestowa1, psyWSchronisku.pobierzListePsow() );
 
     QStringList listaTestowa2;
@@ -146,7 +160,7 @@ void SchroniskoTesty::testPrzydzielaniePsa()
 
     RejestracjaWydanychPsow rejestracja;
 
-    // test pokazał że wymagamy klasy klient
+    // test pokazał że wymagamy klas RejestracjaWydanychPsow oraz Klient
 
     delete wskPies;
 }
@@ -159,6 +173,18 @@ void SchroniskoTesty::testAtrybutyKlienta()
     QCOMPARE( QString("Kowalski"), klient.getNazwisko() );
     QCOMPARE( QString("ul. Kościelna 12; Bydgoszcz; 85790"), klient.getUlica() );
     QCOMPARE( 600821340, klient.getNumerTelefonu() );
+
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodne imie", Continue);
+    QCOMPARE( QString("kuba"), klient.getImie());
+
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodne nazwisko", Continue);
+    QCOMPARE( QString("Nowicki"), klient.getNazwisko() );
+
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodna ulica", Continue);
+    QCOMPARE( QString("ul. Sławków 3; Lublin; 44230"), klient.getUlica() );
+
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodny numer", Continue);
+    QCOMPARE( 515987464, klient.getNumerTelefonu() );
 }
 QTEST_APPLESS_MAIN(SchroniskoTesty)
 
