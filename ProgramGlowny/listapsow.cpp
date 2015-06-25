@@ -22,7 +22,16 @@ QStringList ListaPsow::pobierzListePsow()
         it != listaPsow.end(); ++it ) {
             stringListaPsow.append( (*it)->toString() );
     }
-    //l.append();
     return stringListaPsow;
+}
+
+Pies* ListaPsow::getPies(int id)
+{
+    for(QList<Pies*>::iterator it = listaPsow.begin();
+        it != listaPsow.end(); ++it ) {
+           if( (*it)->getId() == id )
+               return *it;
+    }
+    return 0;
 }
 
