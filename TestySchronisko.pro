@@ -14,10 +14,12 @@ CONFIG   -= app_bundle
 
 TEMPLATE = app
 
-SOURCES += ProgramGlowny/pies.cpp
-SOURCES += ProgramGlowny/listapsow.cpp
-HEADERS += ProgramGlowny/pies.h
-HEADERS += ProgramGlowny/listapsow.h
+SOURCES += ProgramGlowny/pies.cpp \
+           ProgramGlowny/listapsow.cpp \
+           ProgramGlowny/przydzielpsatransakcja.cpp
+HEADERS += ProgramGlowny/pies.h \
+           ProgramGlowny/listapsow.h \
+           ProgramGlowny/przydzielpsatransakcja.h
 
 SOURCES += tst_schroniskotesty.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"

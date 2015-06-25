@@ -17,8 +17,10 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     pies.cpp \
-    listapsow.cpp
+    listapsow.cpp \
+    przydzielpsatransakcja.cpp
 
 HEADERS += \
     pies.h \
-    listapsow.h
+    listapsow.h \
+    przydzielpsatransakcja.h
