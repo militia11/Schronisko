@@ -141,6 +141,7 @@ void SchroniskoTesty::testPrzydzielaniePsa()
     ListaPsow psyWSchronisku;
     psyWSchronisku.dodajPsa(wskPies);
     assert(psyWSchronisku.getPies(35));
+
 }
 
 //QVERIFY(true);
