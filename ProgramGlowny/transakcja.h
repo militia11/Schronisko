@@ -6,6 +6,7 @@ class Transakcja
 {
 public:
     Transakcja();
+    virtual void wykonaj() = 0;
 };
 
 #endif // TRANSAKCJA_H
