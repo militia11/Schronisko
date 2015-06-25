@@ -1,17 +1,18 @@
 #ifndef LISTAPSOW_H
 #define LISTAPSOW_H
 
-#include<QList>
-#include<QStringList>
+#include <QList>
+#include <QStringList>
+#include "pies.h"
 
-class Pies;
 class ListaPsow
 {
 public:
     ListaPsow();
-    void dodajPsa(Pies* p);
-    void usunPsa(Pies *p);
-    QStringList  pobierzListePsow();
+    void dodajPsa(Pies* pies);
+    void usunPsa(Pies *pies);
+    QStringList pobierzListePsow();
+    QStringList pobierzListePsow(RodzajPsa rodzaj);
     Pies *getPies(int id);
 
 private:

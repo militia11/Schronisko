@@ -1,28 +1,40 @@
 #include "listapsow.h"
-#include"pies.h"
+
 ListaPsow::ListaPsow()
 {
 
 }
 
-void ListaPsow::dodajPsa(Pies *p)
+void ListaPsow::dodajPsa(Pies *pies)
 {
-    listaPsow.append(p);
+    listaPsow.append(pies);
 }
 
-void ListaPsow::usunPsa(Pies* p)
+void ListaPsow::usunPsa(Pies* pies)
 {
-    listaPsow.removeOne(p);
+    listaPsow.removeOne(pies);
+}
+
+QStringList ListaPsow::pobierzListePsow(RodzajPsa rodzaj)
+{
+    QStringList wynikowaListaPsow;
+    for(QList<Pies*>::iterator it = listaPsow.begin();
+        it != listaPsow.end(); ++it ) {
+        if( (*it)->getRodzaj() == rodzaj) {
+            wynikowaListaPsow.append( (*it)->toString() );
+        }
+    }
+    return wynikowaListaPsow;
 }
 
 QStringList ListaPsow::pobierzListePsow()
 {
-    QStringList stringListaPsow;
+    QStringList wynikowaListaPsow;
     for(QList<Pies*>::iterator it = listaPsow.begin();
         it != listaPsow.end(); ++it ) {
-            stringListaPsow.append( (*it)->toString() );
+            wynikowaListaPsow.append( (*it)->toString() );
     }
-    return stringListaPsow;
+    return wynikowaListaPsow;
 }
 
 Pies* ListaPsow::getPies(int id)
