@@ -9,8 +9,8 @@ RejestracjaWydanychPsow::RejestracjaWydanychPsow()
 
 RejestracjaWydanychPsow::~RejestracjaWydanychPsow()
 {
-    qDeleteAll(values());//*this
-    clear();
+    //qDeleteAll(*this);//
+    //clear();
 }
 
 void RejestracjaWydanychPsow::dodaj(Pies* pies, Klient* klient)
