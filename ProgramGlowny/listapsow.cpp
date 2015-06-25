@@ -1,9 +1,6 @@
 #include "listapsow.h"
 
-ListaPsow::ListaPsow()
-{
-
-}
+ListaPsow gListaPsow;
 
 void ListaPsow::dodajPsa(Pies *pies)
 {

@@ -3,10 +3,18 @@
 
 #include "transakcja.h"
 
+class Pies;
+class Klient;
 class PrzydzielPsaTransakcja : public Transakcja
 {
+
 public:
-    PrzydzielPsaTransakcja();
+    PrzydzielPsaTransakcja(Pies* pies, Klient* klient);
+    virtual void wykonaj();
+
+private:
+    Pies* wskPies;
+    Klient* wskKlient;
 };
 
 #endif // PRZYDZIELPSATRANSAKCJA_H

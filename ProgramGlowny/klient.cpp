@@ -1,12 +1,17 @@
 #include "klient.h"
 
-Klient::Klient(QString imie, QString nazwisko, QString ulica, int numerTelefonu)
-    :  imie(imie),
+Klient::Klient(int id, QString imie, QString nazwisko, QString ulica, int numerTelefonu)
+    : id(id),
+      imie(imie),
       nazwisko(nazwisko),
       ulica(ulica),
       numerTelefonu(numerTelefonu)
 {
+}
 
+int Klient::getId() const
+{
+    return id;
 }
 
 QString Klient::getImie() const

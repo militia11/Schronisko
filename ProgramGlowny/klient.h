@@ -6,13 +6,15 @@
 class Klient
 {
 public:
-    Klient(QString imie, QString nazwisko, QString ulica, int numerTelefonu);
+    Klient(int id, QString imie, QString nazwisko, QString ulica, int numerTelefonu);
+    int getId() const;
     QString getImie() const;
     QString getNazwisko() const;
     QString getUlica() const;
     int getNumerTelefonu() const;
 
 private:
+    int id;
     QString imie;
     QString nazwisko;
     QString ulica;

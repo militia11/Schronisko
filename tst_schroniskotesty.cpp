@@ -8,6 +8,10 @@
 #include "ProgramGlowny/transakcja.h"
 #include "ProgramGlowny/klient.h"
 #include "ProgramGlowny/rejestracjawydanychpsow.h"
+#include "ProgramGlowny/przydzielpsatransakcja.h"
+
+extern  ListaPsow gListaPsow;
+extern  RejestracjaWydanychPsow gRejestracjaWydanychPsow;
 
 class SchroniskoTesty : public QObject
 {
@@ -17,6 +21,7 @@ public:
     SchroniskoTesty();
 
 private Q_SLOTS:
+
     void testAtrybutyPsa();
     void testDodaniePsa();
     void testUsunieciePsa();
@@ -154,25 +159,40 @@ void SchroniskoTesty::testPrzydzielaniePsa()
 {
     Pies* wskPies = new Pies(35, "Dino", 8, Grozny, "Owczarek" );
 
-    ListaPsow psyWSchronisku;
-    psyWSchronisku.dodajPsa(wskPies);
-    assert(psyWSchronisku.getPies(35));
+    gListaPsow.dodajPsa(wskPies);  // przypadek testowy pokazal, ze potrzebujemy globalnej listy psow
+    assert(gListaPsow.getPies(35));
 
-    RejestracjaWydanychPsow rejestracja;
+    Klient* wskKlient = new Klient(346, "Jan", "Bury", "ul. Osa 12; Bydgoszcz; 85790", 857464757);
+
+    PrzydzielPsaTransakcja przydzielPsa(wskPies, wskKlient);
+    przydzielPsa.wykonaj();
+
+    Klient* wskKlientPobrany = gRejestracjaWydanychPsow[wskPies];
+    assert(wskKlientPobrany);
+
+    Pies* wskPiesPobrany = gRejestracjaWydanychPsow.key(wskKlient);
+    assert(wskPiesPobrany);
 
     // test pokazał że wymagamy klas RejestracjaWydanychPsow oraz Klient
 
+    //RejestracjaWydanychPsow rejestracja;
+
     delete wskPies;
+    delete wskKlient;
 }
 
 void SchroniskoTesty::testAtrybutyKlienta()
 {
-    Klient klient("Adam", "Kowalski", "ul. Kościelna 12; Bydgoszcz; 85790", 600821340);
+    Klient klient(123, "Adam", "Kowalski", "ul. Kościelna 12; Bydgoszcz; 85790", 600821340);
 
-    QCOMPARE( QString("Adam"), klient.getImie());
+    QCOMPARE( 123, klient.getId() );
+    QCOMPARE( QString("Adam"), klient.getImie() );
     QCOMPARE( QString("Kowalski"), klient.getNazwisko() );
     QCOMPARE( QString("ul. Kościelna 12; Bydgoszcz; 85790"), klient.getUlica() );
     QCOMPARE( 600821340, klient.getNumerTelefonu() );
+
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodny numer Id", Continue);
+    QCOMPARE( 345, klient.getId());
 
     QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodne imie", Continue);
     QCOMPARE( QString("kuba"), klient.getImie());

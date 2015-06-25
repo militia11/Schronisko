@@ -8,7 +8,7 @@
 class ListaPsow
 {
 public:
-    ListaPsow();
+    ListaPsow() {}
     void dodajPsa(Pies* pies);
     void usunPsa(Pies *pies);
     QStringList pobierzListePsow();
