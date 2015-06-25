@@ -44,6 +44,20 @@ Pies* ListaPsow::getPies(int id)
            if( (*it)->getId() == id )
                return *it;
     }
+<<<<<<< HEAD
+    return 0;
+=======
+    return stringListaPsow;
+>>>>>>> pobieranieList
+}
+
+Pies* ListaPsow::getPies(int id)
+{
+    for(QList<Pies*>::iterator it = listaPsow.begin();
+        it != listaPsow.end(); ++it ) {
+           if( (*it)->getId() == id )
+               return *it;
+    }
     return 0;
 }
 

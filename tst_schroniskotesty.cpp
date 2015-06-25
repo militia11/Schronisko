@@ -18,6 +18,10 @@ private Q_SLOTS:
     void testDodaniePsa();
     void testUsunieciePsa();
     void testPobranieListyPsow();
+<<<<<<< HEAD
+=======
+    void testPobranieListyPsowDanegoRodzaju();
+>>>>>>> pobieranieList
 };
 
 SchroniskoTesty::SchroniskoTesty()
@@ -39,7 +43,10 @@ void SchroniskoTesty::testPies()
 void SchroniskoTesty::testDodaniePsa()
 {
     Pies* wskPies = new Pies(184, "Burek", 4, Grozny, "Bernardyn" );
+<<<<<<< HEAD
 
+=======
+>>>>>>> pobieranieList
     ListaPsow psyWSchronisku;
     psyWSchronisku.dodajPsa(wskPies);
     assert(psyWSchronisku.getPies(184));
@@ -77,16 +84,67 @@ void SchroniskoTesty::testPobranieListyPsow()
 
     QCOMPARE( listaTestowa1, psyWSchronisku.pobierzListePsow() );
 
+<<<<<<< HEAD
     // porównanie z niewłaściwym stringiem
+=======
+>>>>>>> pobieranieList
     QStringList listaTestowa2;
     listaTestowa2.append( QString("niezgodne dane") );
     listaTestowa2.append( wskPies2->toString() );
 
+<<<<<<< HEAD
     QEXPECT_FAIL("", "Stringi się różnią", Continue);
+=======
+    QEXPECT_FAIL("", "test na niewłaściwe dane : porównanie z niewłaściwym stringiem", Continue);
+>>>>>>> pobieranieList
     QCOMPARE( listaTestowa2, psyWSchronisku.pobierzListePsow() );
 
     delete wskPies1;
     delete wskPies2;
+<<<<<<< HEAD
+=======
+}
+
+void SchroniskoTesty::testPobranieListyPsowDanegoRodzaju()
+{
+    Pies* wskPies1 = new Pies(1384, "Reksio", 4, Grozny, "Amstaf" );
+    Pies* wskPies2 = new Pies(745, "Tofik", 4, Lagodny, "York" );
+    Pies* wskPies3 = new Pies(745, "Burek", 4, Lagodny, "Kundel" );
+
+    ListaPsow psyWSchronisku;
+    psyWSchronisku.dodajPsa(wskPies1);
+    psyWSchronisku.dodajPsa(wskPies2);
+    psyWSchronisku.dodajPsa(wskPies3);
+
+    // porównanie dwóch list stringów:
+
+    // właściwa lista z psami łagodnymi
+    QStringList listaTestowa1;
+    listaTestowa1.append( wskPies2->toString() );
+    listaTestowa1.append( wskPies3->toString() );
+
+    QCOMPARE( listaTestowa1, psyWSchronisku.pobierzListePsow(Lagodny) );
+
+    QStringList listaTestowa2;
+    listaTestowa2.append( wskPies2->toString() );
+    listaTestowa2.append( wskPies3->toString() );
+    listaTestowa2.append( wskPies1->toString() );
+
+    QEXPECT_FAIL("", "porównanie z niewłaściwą listą różnych rodzai", Continue);
+    QCOMPARE( listaTestowa2, psyWSchronisku.pobierzListePsow(Lagodny) );
+
+    QStringList listaTestowa3;
+    listaTestowa3.append( wskPies1->toString() );
+    listaTestowa3.append( QString("niezgodne dane"));
+    listaTestowa3.append( wskPies3->toString() );
+
+    QEXPECT_FAIL("", "test na niewłaściwe dane : porównanie z niewłaściwym stringiem", Continue);
+    QCOMPARE( listaTestowa3, psyWSchronisku.pobierzListePsow() );
+
+    delete wskPies1;
+    delete wskPies2;
+    delete wskPies3;
+>>>>>>> pobieranieList
 }
 
 //QVERIFY(true);
