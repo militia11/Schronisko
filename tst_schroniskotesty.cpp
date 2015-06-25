@@ -5,6 +5,9 @@
 
 #include "ProgramGlowny/pies.h"
 #include "ProgramGlowny/listapsow.h"
+#include "ProgramGlowny/transakcja.h"
+#include "ProgramGlowny/klient.h"
+#include "ProgramGlowny/rejestracjawydanychpsow.h"
 
 class SchroniskoTesty : public QObject
 {
@@ -14,20 +17,20 @@ public:
     SchroniskoTesty();
 
 private Q_SLOTS:
-    void testPies();
+    void testAtrybutyPsa();
     void testDodaniePsa();
     void testUsunieciePsa();
     void testPobranieListyPsow();
     void testPobranieListyPsowDanegoRodzaju();
-
     void testPrzydzielaniePsa();
+    void testAtrybutyKlienta();
 };
 
 SchroniskoTesty::SchroniskoTesty()
 {
 }
 
-void SchroniskoTesty::testPies()
+void SchroniskoTesty::testAtrybutyPsa()
 {
     Pies p(24345, "Azor", 4, Lagodny, "Pudel" );
 
@@ -83,7 +86,6 @@ void SchroniskoTesty::testPobranieListyPsow()
     QStringList listaTestowa2;
     listaTestowa2.append( QString("niezgodne dane") );
     listaTestowa2.append( wskPies2->toString() );
-
 
     QEXPECT_FAIL("", "test na niewłaściwe dane : porównanie z niewłaściwym stringiem", Continue);
     QCOMPARE( listaTestowa2, psyWSchronisku.pobierzListePsow() );
@@ -142,9 +144,22 @@ void SchroniskoTesty::testPrzydzielaniePsa()
     psyWSchronisku.dodajPsa(wskPies);
     assert(psyWSchronisku.getPies(35));
 
+    RejestracjaWydanychPsow rejestracja;
+
+    // test pokazał że wymagamy klasy klient
+
+    delete wskPies;
 }
 
-//QVERIFY(true);
+void SchroniskoTesty::testAtrybutyKlienta()
+{
+    Klient klient("Adam", "Kowalski", "ul. Kościelna 12; Bydgoszcz; 85790", 600821340);
+
+    QCOMPARE( QString("Adam"), klient.getImie());
+    QCOMPARE( QString("Kowalski"), klient.getNazwisko() );
+    QCOMPARE( QString("ul. Kościelna 12; Bydgoszcz; 85790"), klient.getUlica() );
+    QCOMPARE( 600821340, klient.getNumerTelefonu() );
+}
 QTEST_APPLESS_MAIN(SchroniskoTesty)
 
 #include "tst_schroniskotesty.moc"

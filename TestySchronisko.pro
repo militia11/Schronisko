@@ -16,10 +16,15 @@ TEMPLATE = app
 
 SOURCES += ProgramGlowny/pies.cpp \
            ProgramGlowny/listapsow.cpp \
-           ProgramGlowny/przydzielpsatransakcja.cpp
+           ProgramGlowny/przydzielpsatransakcja.cpp \
+           ProgramGlowny/transakcja.cpp \
+           ProgramGlowny/klient.cpp \
+           ProgramGlowny/rejestracjawydanychpsow.cpp
 HEADERS += ProgramGlowny/pies.h \
            ProgramGlowny/listapsow.h \
-           ProgramGlowny/przydzielpsatransakcja.h
+           ProgramGlowny/transakcja.h \
+           ProgramGlowny/klient.h \
+           ProgramGlowny/rejestracjawydanychpsow.cpp
 
 SOURCES += tst_schroniskotesty.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
