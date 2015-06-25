@@ -19,6 +19,8 @@ private Q_SLOTS:
     void testUsunieciePsa();
     void testPobranieListyPsow();
     void testPobranieListyPsowDanegoRodzaju();
+
+    void testPrzydzielaniePsa();
 };
 
 SchroniskoTesty::SchroniskoTesty()
@@ -130,6 +132,18 @@ void SchroniskoTesty::testPobranieListyPsowDanegoRodzaju()
     delete wskPies1;
     delete wskPies2;
     delete wskPies3;
+}
+
+void SchroniskoTesty::testPrzydzielaniePsa()
+{
+    Pies* wskPies = new Pies(35, "Dino", 8, Grozny, "Owczarek" );
+
+    ListaPsow psyWSchronisku;
+    psyWSchronisku.dodajPsa(wskPies);
+    assert(psyWSchronisku.getPies(35));
+
+
+
 }
 
 //QVERIFY(true);
