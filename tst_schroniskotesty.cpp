@@ -18,10 +18,7 @@ private Q_SLOTS:
     void testDodaniePsa();
     void testUsunieciePsa();
     void testPobranieListyPsow();
-<<<<<<< HEAD
-=======
     void testPobranieListyPsowDanegoRodzaju();
->>>>>>> pobieranieList
 };
 
 SchroniskoTesty::SchroniskoTesty()
