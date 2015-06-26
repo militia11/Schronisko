@@ -1,11 +1,15 @@
 #include "pies.h"
+#include "QDate"
 
+
+#include<QDebug>
 Pies::Pies(int id, QString imie, int wiek, RodzajPsa rodzaj, QString rasa)
     : id(id),
       imie(imie),
       wiek(wiek),
       rodzaj(rodzaj),
-      rasa(rasa)
+      rasa(rasa),
+      dataPrzydzielenia(0)
 {
 }
 
@@ -32,6 +36,16 @@ RodzajPsa Pies::getRodzaj() const
 QString Pies::getRasa() const
 {
     return rasa;
+}
+
+QDate* Pies::getDataPrzydzielenia() const
+{
+    return dataPrzydzielenia;
+}
+
+void Pies::setDatePrzydzielenia(QDate* data)
+{
+    dataPrzydzielenia = data;
 }
 
 QString Pies::toString() const

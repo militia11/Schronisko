@@ -18,7 +18,7 @@ void ListaPsow::usunPsa(Pies* pies)
     listaPsow.removeOne(pies);
 }
 
-QStringList ListaPsow::pobierzListePsow(RodzajPsa rodzaj)
+QStringList ListaPsow::getListaPsow(RodzajPsa rodzaj)
 {
     QStringList wynikowaListaPsow;
     for(QList<Pies*>::iterator it = listaPsow.begin();
@@ -30,7 +30,7 @@ QStringList ListaPsow::pobierzListePsow(RodzajPsa rodzaj)
     return wynikowaListaPsow;
 }
 
-QStringList ListaPsow::pobierzListePsow()
+QStringList ListaPsow::getListaPsow()
 {
     QStringList wynikowaListaPsow;
     for(QList<Pies*>::iterator it = listaPsow.begin();

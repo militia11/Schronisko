@@ -13,8 +13,8 @@ public:
 
     void dodajPsa(Pies* pies);
     void usunPsa(Pies *pies);
-    QStringList pobierzListePsow();
-    QStringList pobierzListePsow(RodzajPsa rodzaj);
+    QStringList getListaPsow();
+    QStringList getListaPsow(RodzajPsa rodzaj);
     Pies *getPies(int id);
 
 private:

@@ -1,8 +1,9 @@
 #ifndef PIES_H
 #define PIES_H
 
-#include<QString>
+#include <QString>
 
+class QDate;
 enum RodzajPsa { Lagodny, Grozny };
 
 class Pies
@@ -14,6 +15,8 @@ public:
     int getWiek() const;
     RodzajPsa getRodzaj() const;
     QString getRasa() const;
+    QDate* getDataPrzydzielenia() const;
+    void setDatePrzydzielenia(QDate *data);
     QString toString() const;
 
 private:
@@ -22,6 +25,7 @@ private:
     int wiek;
     RodzajPsa rodzaj;
     QString rasa;
+    QDate* dataPrzydzielenia;
 };
 
 #endif // PIES_H

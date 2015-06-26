@@ -1,11 +1,10 @@
 #ifndef TRANSAKCJA_H
 #define TRANSAKCJA_H
 
-
 class Transakcja
 {
 public:
-    Transakcja();
+    Transakcja() {}
     virtual void wykonaj() = 0;
 };
 

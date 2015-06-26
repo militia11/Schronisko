@@ -5,15 +5,17 @@
 extern ListaPsow gListaPsow;
 extern RejestracjaWydanychPsow gRejestracjaWydanychPsow;
 
-PrzydzielPsaTransakcja::PrzydzielPsaTransakcja(Pies* pies, Klient* klient)
+PrzydzielPsaTransakcja::PrzydzielPsaTransakcja(Pies* pies, Klient* klient, QDate *dataPrzydzielenia)
     : wskPies(pies),
-      wskKlient(klient)
+      wskKlient(klient),
+      dataPrzydzielenia(dataPrzydzielenia)
 {
 }
 
 void PrzydzielPsaTransakcja::wykonaj()
 {
     gListaPsow.usunPsa(wskPies);
+    wskPies->setDatePrzydzielenia(dataPrzydzielenia); // transakcja ustawia psu datę kiedy został przydzielony
     gRejestracjaWydanychPsow.dodaj(wskPies, wskKlient);
 }
 

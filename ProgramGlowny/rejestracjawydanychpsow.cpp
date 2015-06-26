@@ -1,7 +1,10 @@
 #include "rejestracjawydanychpsow.h"
 #include <QStringList>
 #include <QTextStream>
+#include <QDate>
 
+
+#include<QDebug>
 RejestracjaWydanychPsow gRejestracjaWydanychPsow;
 
 RejestracjaWydanychPsow::RejestracjaWydanychPsow()
@@ -24,11 +27,14 @@ QString RejestracjaWydanychPsow::listaPrzydzielenPsow() const
     QString listaPrzydzielenPsow;
     QTextStream strumienWyjscie (&listaPrzydzielenPsow);
     ConstIterator it = constBegin();
+
     for ( ; it != constEnd(); ++it)
-        strumienWyjscie << "[" << it.key()->toString()   // klucz
+    {   strumienWyjscie << "["
+        <<  it.key()->toString()   // klucz
         << "]" << " : ["
         << it.value()->toString()                        // wartość
         << "]" << endl;
+    }
     return listaPrzydzielenPsow;
 }
 
