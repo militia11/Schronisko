@@ -13,12 +13,12 @@ public:
      RejestracjaWydanychPsow();
     ~RejestracjaWydanychPsow();
 
-    void dodaj(Pies* pies, Klient* klient);
-    QStringList pobierzListePrzydzielen() const;
+    void dodaj(Pies* wskPies, Klient* wskKlient);
+    QString listaPrzydzielenPsow() const; //pobierzListePrzydzielen
 
 private:
     RejestracjaWydanychPsow(const RejestracjaWydanychPsow&);
-    RejestracjaWydanychPsow& operator=(const RejestracjaWydanychPsow&);
+    RejestracjaWydanychPsow& operator=(const RejestracjaWydanychPsow);
 };
 
 #endif // REJESTRACJAWYDANYCHPSOW_H

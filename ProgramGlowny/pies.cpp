@@ -7,7 +7,6 @@ Pies::Pies(int id, QString imie, int wiek, RodzajPsa rodzaj, QString rasa)
       rodzaj(rodzaj),
       rasa(rasa)
 {
-
 }
 
 int Pies::getId() const
@@ -37,6 +36,6 @@ QString Pies::getRasa() const
 
 QString Pies::toString() const
 {
-    return QString("ID: %1 Pies o imieniu: %2 Wiek: %3 Rodzaj: %4 Rasa: %5").arg(id).arg(imie).arg(wiek).arg(rodzaj).arg(rasa);
+    return QString("ID: %1 - %2 Wiek: %3 Rasa: %5").arg(id).arg(imie).arg(wiek).arg(rasa);
 }
 

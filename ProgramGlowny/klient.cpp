@@ -34,3 +34,8 @@ int Klient::getNumerTelefonu() const
     return numerTelefonu;
 }
 
+QString Klient::toString() const
+{
+    return QString("ID: %1  %2 %3 Ulica: %4 Nr tel.: %5").arg(id).arg(imie).arg(nazwisko).arg(ulica).arg(numerTelefonu);
+}
+

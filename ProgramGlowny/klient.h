@@ -12,6 +12,7 @@ public:
     QString getNazwisko() const;
     QString getUlica() const;
     int getNumerTelefonu() const;
+    QString toString() const;
 
 private:
     int id;

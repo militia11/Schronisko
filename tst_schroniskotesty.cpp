@@ -22,45 +22,20 @@ public:
 
 private Q_SLOTS:
 
-    void testAtrybutyPsa();
     void testDodaniePsa();
     void testUsunieciePsa();
+    void testAtrybutyPsa();
     void testPobranieListyPsow();
     void testPobranieListyPsowDanegoRodzaju();
+    void testFunkcjiToStringPsa();
     void testPrzydzielaniePsa();
     void testAtrybutyKlienta();
-    void testPobranieListyPrzydzielen();
+    void testFunkcjiToStringKlienta();
+    void testWyswietlenieListyPrzydzielen();
 };
 
 SchroniskoTesty::SchroniskoTesty()
 {
-}
-
-void SchroniskoTesty::testAtrybutyPsa()
-{
-    Pies p(24345, "Azor", 4, Lagodny, "Pudel" );
-
-    QCOMPARE( 24345, p.getId() );
-    QCOMPARE( QString("Azor"), p.getImie() );
-    QCOMPARE( 4, p.getWiek() );
-    QCOMPARE( Lagodny, p.getRodzaj() );
-    QCOMPARE( QString("Pudel"), p.getRasa() );
-
-    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodny numer ID", Continue);
-    QCOMPARE( 98345, p.getId() );
-
-    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodne imie", Continue);
-    QCOMPARE( QString("Burek"), p.getImie() );
-
-    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodny wiek", Continue);
-    QCOMPARE( 12, p.getWiek() );
-
-    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodny rodzaj", Continue);
-    QCOMPARE( Grozny, p.getRodzaj() );
-
-    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodna rasa", Continue);
-    QCOMPARE( QString("Owczarek Bernaski"), p.getRasa() );
-
 }
 
 void SchroniskoTesty::testDodaniePsa()
@@ -83,6 +58,32 @@ void SchroniskoTesty::testUsunieciePsa()
     psyWSchronisku.usunPsa(wskPies);
     Pies* wskPiesZListyPsow = psyWSchronisku.getPies(12);
     assert( wskPiesZListyPsow == 0 );
+}
+
+void SchroniskoTesty::testAtrybutyPsa()
+{
+    Pies pies(24345, "Azor", 4, Lagodny, "Pudel" );
+
+    QCOMPARE( 24345, pies.getId() );
+    QCOMPARE( QString("Azor"), pies.getImie() );
+    QCOMPARE( 4, pies.getWiek() );
+    QCOMPARE( Lagodny, pies.getRodzaj() );
+    QCOMPARE( QString("Pudel"), pies.getRasa() );
+
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodny numer ID", Continue);
+    QCOMPARE( 98345, pies.getId() );
+
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodne imie", Continue);
+    QCOMPARE( QString("Burek"), pies.getImie() );
+
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodny wiek", Continue);
+    QCOMPARE( 12, pies.getWiek() );
+
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodny rodzaj", Continue);
+    QCOMPARE( Grozny, pies.getRodzaj() );
+
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodna rasa", Continue);
+    QCOMPARE( QString("Owczarek Bernaski"), pies.getRasa() );
 }
 
 void SchroniskoTesty::testPobranieListyPsow()
@@ -145,6 +146,12 @@ void SchroniskoTesty::testPobranieListyPsowDanegoRodzaju()
     QCOMPARE( listaTestowa3, psyWSchronisku.pobierzListePsow() );
 }
 
+void SchroniskoTesty::testFunkcjiToStringPsa()
+{
+    Pies pies(34325, "Bemo", 7, Lagodny, "Dog" );
+    qDebug() << pies.toString();
+}
+
 void SchroniskoTesty::testPrzydzielaniePsa()
 {
     Pies* wskPies = new Pies(1, "Dino", 8, Grozny, "Owczarek" );
@@ -194,9 +201,22 @@ void SchroniskoTesty::testAtrybutyKlienta()
     QCOMPARE( 515987464, klient.getNumerTelefonu() );
 }
 
-void SchroniskoTesty::testPobranieListyPrzydzielen()
+void SchroniskoTesty::testFunkcjiToStringKlienta()
 {
+    Klient klient(123, "Józef", "Jung", "ul. Bema 12; Nysa; 42390", 345828740);
+    qDebug() << klient.toString();
+}
 
+void SchroniskoTesty::testWyswietlenieListyPrzydzielen()
+{
+    Pies* wskPies1 = new Pies(124, "Bruno", 4, Grozny, "Owczarek" );
+    Klient* wskKlient1 = new Klient(46, "Łukasz", "Zima", "ul. Osa 1/34; Płock; 32790", 464857757);
+    Pies* wskPies2 = new Pies(356, "Simba", 8, Grozny, "Owczarek" );
+    Klient* wskKlient2 = new Klient(98, "Tomek", "Gawor", "ul. Borów 62; Bytom; 35670", 774855647);
+
+    gRejestracjaWydanychPsow.dodaj(wskPies1,wskKlient1);  // przypadek testowy pokazał, że potrzebujemy globalnej listy psów
+    gRejestracjaWydanychPsow.dodaj(wskPies2,wskKlient2);
+    qDebug() << gRejestracjaWydanychPsow.listaPrzydzielenPsow();
 }
 QTEST_APPLESS_MAIN(SchroniskoTesty)
 

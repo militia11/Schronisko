@@ -17,3 +17,10 @@ void PrzydzielPsaTransakcja::wykonaj()
     gRejestracjaWydanychPsow.dodaj(wskPies, wskKlient);
 }
 
+PrzydzielPsaTransakcja::PrzydzielPsaTransakcja(const PrzydzielPsaTransakcja &) {}
+
+PrzydzielPsaTransakcja &PrzydzielPsaTransakcja::operator=(const PrzydzielPsaTransakcja &)
+{
+    return *this;
+}
+

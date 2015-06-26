@@ -1,11 +1,11 @@
 #include "rejestracjawydanychpsow.h"
 #include <QStringList>
+#include <QTextStream>
 
 RejestracjaWydanychPsow gRejestracjaWydanychPsow;
 
 RejestracjaWydanychPsow::RejestracjaWydanychPsow()
 {
-
 }
 
 RejestracjaWydanychPsow::~RejestracjaWydanychPsow()
@@ -14,25 +14,30 @@ RejestracjaWydanychPsow::~RejestracjaWydanychPsow()
     clear();            // wyczyszczenie listy
 }
 
-void RejestracjaWydanychPsow::dodaj(Pies* pies, Klient* klient)
+void RejestracjaWydanychPsow::dodaj(Pies* wskPies, Klient* wskKlient)
 {
-    insert(pies, klient);
+    insert(wskPies, wskKlient);
 }
 
-QStringList RejestracjaWydanychPsow::pobierzListePrzydzielen() const
+QString RejestracjaWydanychPsow::listaPrzydzielenPsow() const
 {
-    QStringList listaPrzydzielenPsow;
-//    for(QMap <Pies*, Klient*>::iterator it = (*this).begin();
-//        it != (*this).end(); ++it ) {
-//           ;// listaPrzydzielenPsow.append( (*it)->toString() );
-//    }
+    QString listaPrzydzielenPsow;
+    QTextStream strumienWyjscie (&listaPrzydzielenPsow);
+    ConstIterator it = constBegin();
+    for ( ; it != constEnd(); ++it)
+        strumienWyjscie << "[" << it.key()->toString()   // klucz
+        << "]" << " : ["
+        << it.value()->toString()                        // wartość
+        << "]" << endl;
     return listaPrzydzielenPsow;
 }
 
-RejestracjaWydanychPsow::RejestracjaWydanychPsow(const RejestracjaWydanychPsow &) {}
+RejestracjaWydanychPsow::RejestracjaWydanychPsow(const RejestracjaWydanychPsow &) : QMap <Pies*, Klient*>() {}
 
-RejestracjaWydanychPsow &RejestracjaWydanychPsow::operator=(const RejestracjaWydanychPsow &)
+RejestracjaWydanychPsow &RejestracjaWydanychPsow::operator=(const RejestracjaWydanychPsow)
 {
-    return *this;
+     return *this;
 }
+
+
 

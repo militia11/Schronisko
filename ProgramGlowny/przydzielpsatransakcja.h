@@ -13,7 +13,9 @@ public:
     virtual void wykonaj();
 
 private:
-    // bloki kopiowania tu !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    PrzydzielPsaTransakcja(const PrzydzielPsaTransakcja&);
+    PrzydzielPsaTransakcja& operator=(const PrzydzielPsaTransakcja&);
+
     Pies* wskPies;
     Klient* wskKlient;
 };
