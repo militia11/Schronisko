@@ -13,6 +13,7 @@ public:
     virtual void wykonaj();
 
 private:
+    // bloki kopiowania tu !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     Pies* wskPies;
     Klient* wskKlient;
 };

@@ -2,6 +2,12 @@
 
 ListaPsow gListaPsow;
 
+ListaPsow::~ListaPsow()
+{
+    qDeleteAll(listaPsow); // usunięcie wskaźników
+    listaPsow.clear();     // wyczyszczenie listy
+}
+
 void ListaPsow::dodajPsa(Pies *pies)
 {
     listaPsow.append(pies);
@@ -43,5 +49,13 @@ Pies* ListaPsow::getPies(int id)
     }
     return 0;
 }
+
+ListaPsow::ListaPsow(const ListaPsow &) {}
+
+ListaPsow &ListaPsow::operator=(const ListaPsow)
+{
+    return *this;
+}
+
 
 

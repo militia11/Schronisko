@@ -9,6 +9,8 @@ class ListaPsow
 {
 public:
     ListaPsow() {}
+    ~ListaPsow();
+
     void dodajPsa(Pies* pies);
     void usunPsa(Pies *pies);
     QStringList pobierzListePsow();
@@ -16,6 +18,8 @@ public:
     Pies *getPies(int id);
 
 private:
+    ListaPsow(const ListaPsow&);
+    ListaPsow& operator=(const ListaPsow);
     QList<Pies*> listaPsow;
 };
 

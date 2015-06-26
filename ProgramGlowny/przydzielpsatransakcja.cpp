@@ -9,13 +9,11 @@ PrzydzielPsaTransakcja::PrzydzielPsaTransakcja(Pies* pies, Klient* klient)
     : wskPies(pies),
       wskKlient(klient)
 {
-
 }
 
 void PrzydzielPsaTransakcja::wykonaj()
 {
     gListaPsow.usunPsa(wskPies);
     gRejestracjaWydanychPsow.dodaj(wskPies, wskKlient);
-
 }
 

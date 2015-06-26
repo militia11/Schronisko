@@ -10,9 +10,15 @@ class Pies;
 class RejestracjaWydanychPsow : public QMap <Pies*, Klient*>
 {
 public:
-    RejestracjaWydanychPsow();
+     RejestracjaWydanychPsow();
     ~RejestracjaWydanychPsow();
+
     void dodaj(Pies* pies, Klient* klient);
+    QStringList pobierzListePrzydzielen() const;
+
+private:
+    RejestracjaWydanychPsow(const RejestracjaWydanychPsow&);
+    RejestracjaWydanychPsow& operator=(const RejestracjaWydanychPsow&);
 };
 
 #endif // REJESTRACJAWYDANYCHPSOW_H

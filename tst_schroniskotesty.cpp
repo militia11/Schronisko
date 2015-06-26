@@ -29,6 +29,7 @@ private Q_SLOTS:
     void testPobranieListyPsowDanegoRodzaju();
     void testPrzydzielaniePsa();
     void testAtrybutyKlienta();
+    void testPobranieListyPrzydzielen();
 };
 
 SchroniskoTesty::SchroniskoTesty()
@@ -45,19 +46,19 @@ void SchroniskoTesty::testAtrybutyPsa()
     QCOMPARE( Lagodny, p.getRodzaj() );
     QCOMPARE( QString("Pudel"), p.getRasa() );
 
-    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodne ID", Continue);
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodny numer ID", Continue);
     QCOMPARE( 98345, p.getId() );
 
-    QEXPECT_FAIL("", "test na niewłaściwe dane : inne imie", Continue);
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodne imie", Continue);
     QCOMPARE( QString("Burek"), p.getImie() );
 
-    QEXPECT_FAIL("", "test na niewłaściwe dane : inny wiek", Continue);
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodny wiek", Continue);
     QCOMPARE( 12, p.getWiek() );
 
     QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodny rodzaj", Continue);
     QCOMPARE( Grozny, p.getRodzaj() );
 
-    QEXPECT_FAIL("", "test na niewłaściwe dane : inna rasa", Continue);
+    QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodna rasa", Continue);
     QCOMPARE( QString("Owczarek Bernaski"), p.getRasa() );
 
 }
@@ -69,22 +70,19 @@ void SchroniskoTesty::testDodaniePsa()
     ListaPsow psyWSchronisku;
     psyWSchronisku.dodajPsa(wskPies);
     assert(psyWSchronisku.getPies(184));
-
-    delete wskPies;
 }
 
 void SchroniskoTesty::testUsunieciePsa()
 {
-    Pies* wskPies = new Pies(12, "Burek", 4, Grozny, "Bernardyn" );
+    Pies* wskPies = new Pies(12, "Gordon", 6, Grozny, "Husky" );
 
     ListaPsow psyWSchronisku;
     psyWSchronisku.dodajPsa(wskPies);
     assert( psyWSchronisku.getPies(12) );
 
     psyWSchronisku.usunPsa(wskPies);
-    assert( psyWSchronisku.getPies(12) == 0 );
-
-    delete wskPies;
+    Pies* wskPiesZListyPsow = psyWSchronisku.getPies(12);
+    assert( wskPiesZListyPsow == 0 );
 }
 
 void SchroniskoTesty::testPobranieListyPsow()
@@ -108,10 +106,6 @@ void SchroniskoTesty::testPobranieListyPsow()
 
     QEXPECT_FAIL("", "test na niewłaściwe dane : porównanie z niewłaściwym stringiem", Continue);
     QCOMPARE( listaTestowa2, psyWSchronisku.pobierzListePsow() );
-
-    delete wskPies1;
-    delete wskPies2;
-
 }
 
 void SchroniskoTesty::testPobranieListyPsowDanegoRodzaju()
@@ -139,7 +133,7 @@ void SchroniskoTesty::testPobranieListyPsowDanegoRodzaju()
     listaTestowa2.append( wskPies3->toString() );
     listaTestowa2.append( wskPies1->toString() );
 
-    QEXPECT_FAIL("", "porównanie z niewłaściwą listą różnych rodzai", Continue);
+    QEXPECT_FAIL("", "porównanie z niewłaściwą listą różnych rodzajów", Continue);
     QCOMPARE( listaTestowa2, psyWSchronisku.pobierzListePsow(Lagodny) );
 
     QStringList listaTestowa3;
@@ -149,18 +143,14 @@ void SchroniskoTesty::testPobranieListyPsowDanegoRodzaju()
 
     QEXPECT_FAIL("", "test na niewłaściwe dane : porównanie z niewłaściwym stringiem", Continue);
     QCOMPARE( listaTestowa3, psyWSchronisku.pobierzListePsow() );
-
-    delete wskPies1;
-    delete wskPies2;
-    delete wskPies3;
 }
 
 void SchroniskoTesty::testPrzydzielaniePsa()
 {
-    Pies* wskPies = new Pies(35, "Dino", 8, Grozny, "Owczarek" );
+    Pies* wskPies = new Pies(1, "Dino", 8, Grozny, "Owczarek" );
 
-    gListaPsow.dodajPsa(wskPies);  // przypadek testowy pokazal, ze potrzebujemy globalnej listy psow
-    assert(gListaPsow.getPies(35));
+    gListaPsow.dodajPsa(wskPies);  // przypadek testowy pokazał, że potrzebujemy globalnej listy psów
+    assert(gListaPsow.getPies(1));
 
     Klient* wskKlient = new Klient(346, "Jan", "Bury", "ul. Osa 12; Bydgoszcz; 85790", 857464757);
 
@@ -168,17 +158,14 @@ void SchroniskoTesty::testPrzydzielaniePsa()
     przydzielPsa.wykonaj();
 
     Klient* wskKlientPobrany = gRejestracjaWydanychPsow[wskPies];
-    //assert(wskKlientPobrany);
+    assert(wskKlientPobrany);
 
     Pies* wskPiesPobrany = gRejestracjaWydanychPsow.key(wskKlient);
-    //assert(wskPiesPobrany);
+    assert(wskPiesPobrany);          // test pokazał że wymagamy klas RejestracjaWydanychPsow oraz Klient
 
-    // test pokazał że wymagamy klas RejestracjaWydanychPsow oraz Klient
-
-    //RejestracjaWydanychPsow rejestracja;
-
-    delete wskPies;
-    delete wskKlient;
+    // sprawdzenie czy pies został jednocześnie usunięty z listy psów dostępnych
+    Pies* wskPiesZListyPsow = gListaPsow.getPies(1);
+    assert( wskPiesZListyPsow == 0 );
 }
 
 void SchroniskoTesty::testAtrybutyKlienta()
@@ -205,6 +192,11 @@ void SchroniskoTesty::testAtrybutyKlienta()
 
     QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodny numer", Continue);
     QCOMPARE( 515987464, klient.getNumerTelefonu() );
+}
+
+void SchroniskoTesty::testPobranieListyPrzydzielen()
+{
+
 }
 QTEST_APPLESS_MAIN(SchroniskoTesty)
 
