@@ -96,7 +96,7 @@ void SchroniskoTesty::testPobranieListyPsow()
     psyWSchronisku.dodajPsa(wskPies1);
     psyWSchronisku.dodajPsa(wskPies2);
 
-    // porównanie dwóch list stringów
+    // porównanie dwóch list stringów:
     QStringList listaTestowa1;
     listaTestowa1.append( wskPies1->toString() );
     listaTestowa1.append( wskPies2->toString() );
