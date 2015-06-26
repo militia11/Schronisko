@@ -53,3 +53,10 @@ QString Pies::toString() const
     return QString("ID: %1 - %2 Wiek: %3 Rasa: %5").arg(id).arg(imie).arg(wiek).arg(rasa);
 }
 
+Pies::Pies(const Pies &) {}
+
+Pies &Pies::operator=(const Pies &)
+{
+    return *this;
+}
+

@@ -20,6 +20,9 @@ public:
     QString toString() const;
 
 private:
+    Pies(const Pies&);
+    Pies& operator=(const Pies&);
+
     int id;
     QString imie;
     int wiek;

@@ -213,7 +213,7 @@ void SchroniskoTesty::testAtrybutyKlienta()
     QCOMPARE( 345, klient.getId());
 
     QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodne imie", Continue);
-    QCOMPARE( QString("kuba"), klient.getImie());
+    QCOMPARE( QString("Kuba"), klient.getImie());
 
     QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodne nazwisko", Continue);
     QCOMPARE( QString("Nowicki"), klient.getNazwisko() );
